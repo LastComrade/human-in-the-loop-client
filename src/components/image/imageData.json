@@ -1,0 +1,122 @@
+{
+    "1": {
+        "id": 1,
+        "url": "https://images.pexels.com/photos/208512/pexels-photo-208512.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "labels": [
+            "capsule",
+            "tablet"
+        ],
+        "user": {
+            "firstName": "Konark",
+            "lastName": "Lohat"
+        },
+        "accuracy": 0.4,
+        "validated": false
+    },
+    "2": {
+        "id": 2,
+        "url": "https://images.pexels.com/photos/242178/pexels-photo-242178.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "labels": [
+            "garlic",
+            "lemon"
+        ],
+        "user": {
+            "firstName": "Konark",
+            "lastName": "Lohat"
+        },
+        "accuracy": 0.5,
+        "validated": false
+    },
+    "3": {
+        "id": 3,
+        "url": "https://images.pexels.com/photos/207496/pexels-photo-207496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "labels": [
+            "fracture",
+            "joint"
+        ],
+        "user": {
+            "firstName": "Konark",
+            "lastName": "Lohat"
+        },
+        "accuracy": 0.4,
+        "validated": false
+    },
+    "4": {
+        "id": 4,
+        "url": "https://images.pexels.com/photos/45239/white-blood-cell-cell-blood-cell-blood-45239.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "labels": [
+            "virus"
+        ],
+        "user": {
+            "firstName": "Konark",
+            "lastName": "Lohat"
+        },
+        "accuracy": 0.1,
+        "validated": false
+    },
+    "5": {
+        "id": 5,
+        "url": "https://images.pexels.com/photos/9007761/pexels-photo-9007761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "labels": [
+            "bacteria"
+        ],
+        "user": {
+            "firstName": "Konark",
+            "lastName": "Lohat"
+        },
+        "accuracy": 0.3,
+        "validated": false
+    },
+    "6": {
+        "id": 6,
+        "url": "https://images.pexels.com/photos/10448365/pexels-photo-10448365.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "labels": [
+            "pathogens"
+        ],
+        "user": {
+            "firstName": "Konark",
+            "lastName": "Lohat"
+        },
+        "accuracy": 0.2,
+        "validated": false
+    },
+    "7": {
+        "id": 7,
+        "url": "https://images.pexels.com/photos/1059161/pexels-photo-1059161.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "labels": [
+            "pathogens"
+        ],
+        "user": {
+            "firstName": "Konark",
+            "lastName": "Lohat"
+        },
+        "accuracy": 1,
+        "validated": true
+    },
+    "8": {
+        "id": 8,
+        "url": "https://images.pexels.com/photos/920157/pexels-photo-920157.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "labels": [
+            "pathogens"
+        ],
+        "user": {
+            "firstName": "Konark",
+            "lastName": "Lohat"
+        },
+        "accuracy": 1,
+        "validated": true
+    },
+    "9": {
+        "id": 9,
+        "url": "https://images.pexels.com/photos/5905518/pexels-photo-5905518.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "labels": [
+            "pathogens"
+        ],
+        "user": {
+            "firstName": "Konark",
+            "lastName": "Lohat"
+        },
+        "accuracy": 1,
+        "validated": true
+    }
+}
