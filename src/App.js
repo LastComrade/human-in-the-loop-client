@@ -15,6 +15,7 @@ const app = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        
         <Route path="/data-image" element={<ImageCards />} />
         <Route path="/data-video" element={<VideoCards />} />
         <Route path="/data-audio" element={<AudioCards />} />

@@ -16,6 +16,8 @@ const fetchClassificationData = async (id) => {
   res.data.labels = res.data.labels.split(",");
   res.data.annotation = JSON.parse(res.data.annotation);
 
+  // console.log(res.data.annotation);
+
   console.log("FETCH CLASSIFICATION DATA - ", res.data);
   return res.data;
 };
@@ -23,8 +25,11 @@ const fetchClassificationData = async (id) => {
 const generateConfig = (labels) => {
   const config = `
   <View>
-    <Image name="image" value="$image"></Image>
-    <RectangleLabels name="tag" toName="image">
+  <Header value="Select label and click the image to start"/>
+  <Image name="image" value="$image" zoom="true"/>
+  <PolygonLabels name="label" toName="image"
+                 strokeWidth="3" pointSize="small"
+                 opacity="0.9">
     ${(function labelsRender() {
       let ret = "";
       for (let i = 0; i < labels.length; i++) {
@@ -33,8 +38,8 @@ const generateConfig = (labels) => {
 
       return ret;
     })()}
-    </RectangleLabels>
-  </View>
+    </PolygonLabels>
+</View>
   `;
 
   return config;
@@ -59,6 +64,7 @@ const Wrapper = (props) => {
 
         // Buildinf a new label studio instance
         if (rootRef.current) {
+          console.log("CHECK THIS", data.annotation);
           lsfRef.current = new LabelStudio(rootRef.current, {
             config: data.config,
 
@@ -87,8 +93,8 @@ const Wrapper = (props) => {
             },
 
             task: {
-              annotations: [],
-              predictions: [],
+              annotations: data.annotation,
+              predictions: data.annotation,
               id: data.id,
               data: {
                 image: data.urls,
@@ -104,7 +110,7 @@ const Wrapper = (props) => {
 
             onSubmitAnnotation: async function (ls, annotationData) {
               const annotation = annotationData.serializeAnnotation();
-              console.log(annotation);
+              console.log("ANNN - ", annotation);
               if (annotation.length > 0) {
                 axios
                   .put(
@@ -114,7 +120,12 @@ const Wrapper = (props) => {
                       validated: true,
                       accuracy: 1,
                       labels: data.labels.join(","),
-                      annotation: JSON.stringify(annotation),
+                      annotation: !data.annotation
+                        ? JSON.stringify([{ result: annotation }])
+                        : JSON.stringify([
+                            ...data.annotation,
+                            { result: annotation },
+                          ]),
                     }
                   )
                   .then(() => {
@@ -124,6 +135,40 @@ const Wrapper = (props) => {
                     toast.error("Annotation not saved");
                     throw error;
                   });
+              } else {
+                toast.error("Please provide an annotation");
+              }
+            },
+
+            onUpdateAnnotation: async function (ls, annotationData) {
+              const annotation = annotationData.serializeAnnotation();
+              console.log("UPPPPP - ", annotation);
+              if (annotation.length > 0) {
+                axios
+                  .put(
+                    `http://localhost:8000/api/classification-update/${data.id}/`,
+                    {
+                      ...data,
+                      validated: true,
+                      accuracy: 1,
+                      labels: data.labels.join(","),
+                      annotation: !data.annotation
+                        ? JSON.stringify([{ result: annotation }])
+                        : JSON.stringify([
+                            ...data.annotation,
+                            { result: annotation },
+                          ]),
+                    }
+                  )
+                  .then(() => {
+                    toast.success("Annotation saved");
+                  })
+                  .catch((error) => {
+                    toast.error("Annotation not saved");
+                    throw error;
+                  });
+              } else {
+                toast.error("Please provide an annotation");
               }
             },
           });
@@ -140,7 +185,7 @@ const Wrapper = (props) => {
         <Toaster />
       </div>
       {data ? (
-        <div className="label-studio-root" ref={rootRef}></div>
+        <div className="bg-red-500 label-studio-root" ref={rootRef}></div>
       ) : (
         <div className="text-center">Loading...</div>
       )}
