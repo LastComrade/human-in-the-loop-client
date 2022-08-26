@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Server source code - https://github.com/LastComrade/human-in-the-loop-server
 
 ## Available Scripts
 
